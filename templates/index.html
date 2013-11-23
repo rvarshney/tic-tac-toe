@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- CDN links for Bootstrap, JQuery, Underscore and Backbone -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+
+    <!-- Client CSS and Javascript -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/constants.js"></script>
+    <script src="js/models.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+	<div class="board container-fluid"></div>
+    <script type="text/html" id="board_template">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" href="#">Tic Tac Toe</a>
+            </div>
+        </div>
+        <div class="ctr row">
+            <div class="message alert alert-info ctr span6 hide"></div>
+        </div>
+        </br>
+        <table class="ctr table table-bordered span6">
+            <% _.each(board, function(row, rowIndex) { %>
+                <tr>
+                <% _.each(row, function(column, colIndex) { %>
+                    <td class="span2 cell" data-row="<%= rowIndex %>" data-column="<%= colIndex %>">
+                        <% if (column != TicTacToe.Constants.EMPTY) { %>
+                            <%= column %>
+                        <% } %>
+                    </td>
+                <% }); %>
+                </tr>
+            <% }); %>
+        </table>
+        </br>
+        <div class="ctr row">
+            <button type="button" class="start btn primary large" <% if (inProgress) { %>disabled="disabled" <% } %>>Start</button>
+        </div>
+        <div class="ctr row">
+            <div class="btn-group level">
+                <button type="button" class="easy <% if (randomMove) { %> active <% } %> btn primary large" <% if (inProgress) { %>disabled="disabled" <% } %>>Easy</button>
+                <button type="button" class="hard <% if (!randomMove) { %> active <% } %> btn primary large" <% if (inProgress) { %>disabled="disabled" <% } %>>Hard</button>
+            </div>
+        </div>
+    </script>
+</body>
+</html>

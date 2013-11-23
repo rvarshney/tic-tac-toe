@@ -1,0 +1,37 @@
+.table td.cell {
+    height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.table td.cell.lose {
+    background-color: #da4f49;
+    color: white;
+}
+
+.table td.cell.win {
+    background-color: #5bb75b;
+    color: white;
+}
+
+.btn.start,
+.btn.easy,
+.btn.hard {
+    color: #777777;
+}
+
+.btn-group.level {
+    padding: 20px;
+}
+
+.ctr {
+    text-align: center;
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+.message {
+    padding: 10px 0;
+}
