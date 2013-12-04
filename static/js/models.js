@@ -80,34 +80,17 @@ TicTacToe.Models.Board = Backbone.Model.extend({
         return hash;
     },
     isGameFinished: function(board, row, col, player) {
-        // Check for a win with all the cells in the same row
-        var rowWin = true;
-        var rowWinCells = [];
+        var rowWin = true, colWin = true, rightWin = true, leftWin = true;
+        var rowWinCells = [], colWinCells = [], rightWinCells = [], leftWinCells = [];
+
+        // Check for a row win, col win or diagonal wins
         for(var i = 0; i < TicTacToe.Constants.SIZE; i++) {
             rowWin = rowWin && board[row][i] === player;
             rowWinCells.push({row: row, col: i});
-        }
-
-        // Check for a win with all the cells in the same column
-        var colWin = true;
-        var colWinCells = [];
-        for(i = 0; i < TicTacToe.Constants.SIZE; i++) {
             colWin = colWin && board[i][col] === player;
             colWinCells.push({row: i, col: col});
-        }
-
-        // Check for a win on right diagonal
-        var rightWin = true;
-        var rightWinCells = [];
-        for(i = 0; i < TicTacToe.Constants.SIZE; i++) {
             rightWin = rightWin && board[i][i] === player;
             rightWinCells.push({row: i, col: i});
-        }
-
-        // Check for a win on the left diagonal
-        var leftWin = true;
-        var leftWinCells = [];
-        for(i = 0; i < TicTacToe.Constants.SIZE; i++) {
             leftWin = leftWin && board[i][TicTacToe.Constants.SIZE - 1 - i] === player;
             leftWinCells.push({row: i, col: TicTacToe.Constants.SIZE - 1 - i});
         }
